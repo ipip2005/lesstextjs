@@ -1,0 +1,25 @@
+{
+  "name": "react-lesstext",
+  "version": "0.0.1",
+  "description": "A react component that display multiple lines of text which is truncated at the end.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
+    "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
+  },
+  "devDependencies": {
+    "@microsoft/web-library-build": "~4.4.32",
+    "@types/react": "16.1.0",
+    "@types/react-dom": "16.0.4",
+    "@types/webpack-env": "1.13.1",
+    "gulp": "~3.9.1",
+    "react": "16.3.0",
+    "react-dom": "16.3.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "build": "gulp test --clean"
+  }
+}
