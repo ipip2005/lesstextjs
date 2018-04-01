@@ -33,6 +33,5 @@ $RECYCLE.BIN/
 .Trashes
 
 node_modules
-lib
 dist
 temp
