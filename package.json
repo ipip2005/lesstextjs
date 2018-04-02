@@ -1,6 +1,6 @@
 {
-  "name": "react-lesstext",
-  "version": "0.0.1",
+  "name": "lesstextjs",
+  "version": "0.0.2",
   "description": "A react component that display multiple lines of text which is truncated at the end.",
   "license": "MIT",
   "main": "lib/index.js",
@@ -23,5 +23,8 @@
   "dependencies": {},
   "scripts": {
     "build": "gulp test --clean"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
