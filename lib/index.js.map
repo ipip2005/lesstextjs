@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,QAAQ,EAET,MAAM,YAAY,CAAC","file":"index.js","sourcesContent":["export {\r\n  truncate,\r\n  ITruncateOptions\r\n} from './truncate';\r\n"],"sourceRoot":"../src"}
+{"version":3,"sources":["index.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAC","file":"index.js","sourcesContent":["export { ITruncateOptions } from './ITruncateOptions';\r\nexport { truncate } from './truncate';\r\nexport { TruncationResult } from './TruncationResult';\r\n"],"sourceRoot":"../src"}

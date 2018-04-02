@@ -1,5 +1,6 @@
 devDependencies:
   '@microsoft/web-library-build': 4.4.32
+  '@types/es6-promise': 0.0.33
   '@types/react': 16.1.0
   '@types/react-dom': 16.0.4
   '@types/webpack-env': 1.13.1
@@ -257,6 +258,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-t/bkRvRRECnujj9DB1+1tz+6oLo=
+  /@types/es6-promise/0.0.33:
+    dev: true
+    resolution:
+      integrity: sha1-KApwfmKxtr7xqGzAhh7GPNBsf/M=
   /@types/fs-extra/0.0.37:
     dependencies:
       '@types/node': 9.6.1
@@ -9839,6 +9844,7 @@ shrinkwrapMinorVersion: 4
 shrinkwrapVersion: 3
 specifiers:
   '@microsoft/web-library-build': ~4.4.32
+  '@types/es6-promise': 0.0.33
   '@types/react': 16.1.0
   '@types/react-dom': 16.0.4
   '@types/webpack-env': 1.13.1

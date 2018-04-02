@@ -1,1 +1,3 @@
-export { truncate, ITruncateOptions } from './truncate';
+export { ITruncateOptions } from './ITruncateOptions';
+export { truncate } from './truncate';
+export { TruncationResult } from './TruncationResult';
