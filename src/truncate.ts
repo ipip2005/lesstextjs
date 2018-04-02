@@ -12,7 +12,7 @@ function normalizeOptions(options: Partial<ITruncateOptions>): ITruncateOptions 
     options.lineHeight = options.lineHeight;
   } else {
     const originalLineHeight: string = window
-      .getComputedStyle(this._textContainerElement, undefined)
+      .getComputedStyle(options.monitorElement, undefined)
       .getPropertyValue('line-height');
 
     options.lineHeight = parseInt(originalLineHeight, 10);
