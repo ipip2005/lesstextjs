@@ -1,0 +1,30 @@
+{
+  "exclude": [
+    "dist",
+    "node_modules",
+    "lib"
+  ],
+  "compilerOptions": {
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
+    "types": [
+      "webpack-env"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.collection"
+    ]
+  }
+}

@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"index.js","sourcesContent":[],"sourceRoot":"../src"}
+{"version":3,"sources":["index.ts"],"names":[],"mappings":"AAAA,OAAO,EACL,QAAQ,EAET,MAAM,YAAY,CAAC","file":"index.js","sourcesContent":["export {\r\n  truncate,\r\n  ITruncateOptions\r\n} from './truncate';\r\n"],"sourceRoot":"../src"}
