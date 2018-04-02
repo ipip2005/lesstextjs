@@ -9048,7 +9048,7 @@ packages:
   /tslint-microsoft-contrib/5.0.3/tslint@5.9.1+typescript@2.4.2:
     dependencies:
       tslint: /tslint/5.9.1/typescript@2.4.2
-      tsutils: /tsutils/2.25.0/typescript@2.4.2
+      tsutils: /tsutils/2.25.1/typescript@2.4.2
       typescript: 2.4.2
     dev: true
     id: onedrive.pkgs.visualstudio.com/tslint-microsoft-contrib/5.0.3
@@ -9070,7 +9070,7 @@ packages:
       resolve: 1.6.0
       semver: 5.5.0
       tslib: 1.9.0
-      tsutils: /tsutils/2.25.0/typescript@2.4.2
+      tsutils: /tsutils/2.25.1/typescript@2.4.2
       typescript: 2.4.2
     dev: true
     engines:
@@ -9087,16 +9087,16 @@ packages:
     optional: true
     resolution:
       integrity: sha1-fcSjOvcVgatDN9qR2FylQn69mpc=
-  /tsutils/2.25.0/typescript@2.4.2:
+  /tsutils/2.25.1/typescript@2.4.2:
     dependencies:
       tslib: 1.9.0
       typescript: 2.4.2
     dev: true
-    id: onedrive.pkgs.visualstudio.com/tsutils/2.25.0
+    id: onedrive.pkgs.visualstudio.com/tsutils/2.25.1
     peerDependencies:
       typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 2.10.0-dev'
     resolution:
-      integrity: sha1-FNYW71kiSjyft+tIPhwYK2Zlrl4=
+      integrity: sha1-JKRjQquLF0o/veYy5g3NEbZJgvk=
   /tty-browserify/0.0.0:
     dev: true
     resolution:

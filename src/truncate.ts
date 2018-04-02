@@ -15,7 +15,7 @@ function normalizeOptions(options: Partial<ITruncateOptions>): ITruncateOptions 
       .getComputedStyle(options.monitorElement, undefined)
       .getPropertyValue('line-height');
 
-    options.lineHeight = parseInt(originalLineHeight, 10);
+    options.lineHeight = parseInt(originalLineHeight, 10) || 20;
   }
 
   options.linesCount = options.linesCount || 2;
