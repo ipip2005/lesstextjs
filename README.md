@@ -1,5 +1,7 @@
 # lesstextjs <UNDER DEVELOPMENT>
-A helper function that display multiple lines of text to be truncated at the end to fit given number of lines.
+At the world of web development, one of the most common scenario that is not built-in cross-browser is truncated-multiple-lines-of-text.
+
+While `text-overflow: ellipsis;` only resolves single line truncation of the text element, and only chrome provides bulit-in solution to multiline truncation which is CSS property `-webkit-line-clamp`. We, as web UI developer, really need to a simple and cross-browser solution to support multiline truncation.
 
 ## Demo
 https://codesandbox.io/s/myp6jn4878
