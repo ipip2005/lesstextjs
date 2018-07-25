@@ -2,7 +2,7 @@ import { ITruncateOptions } from './ITruncateOptions';
 import { TruncationResult } from './TruncationResult';
 
 /**
- * Normailize - Set default value of options to make all fields required.
+ * Normalize - Set default value of options to make all fields required.
  * @param options - The truncate options object that has optional fields.
  */
 function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions> {
