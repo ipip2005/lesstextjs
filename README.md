@@ -4,7 +4,8 @@ At the world of web development, one of the most common scenario which is not bu
 While `text-overflow: ellipsis;` only resolves single line truncation of the text element, and only chrome provides bulit-in solution to multiline truncation which is CSS property `-webkit-line-clamp`. We, as web UI developer, really need to a simple and cross-browser solution to support multiline truncation.
 
 ## Demo
-https://codesandbox.io/s/myp6jn4878
+### Simple truncation with multiple lines
+https://codesandbox.io/s/j20q95zq7v
 
 ## TODOS
 
