@@ -26,7 +26,4 @@ https://codesandbox.io/s/j20q95zq7v
  - Truncate any part of a multiline text and truncated text will end with `...`.
 
 ## TODOS
-
- - Given options for hanlding element resize:
-  2. Change the LessText to class. We should provide several public API so consumer can update whenever they want.
  - Truncate using requestAnimationFrame for better performance
