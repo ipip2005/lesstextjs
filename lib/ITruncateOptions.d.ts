@@ -32,6 +32,8 @@ export interface ITruncateOptions {
     reserveExtraSpace?: boolean;
     /**
      * Whether the last word in the truncated text could be a broken down word or must be a complete word.
+     * It doesn't work when separator is undefined or empty string because all characters have
+     * already been broken up.
      * @default [omissionBreakWord=false]
      */
     omissionBreakLastWord?: boolean;

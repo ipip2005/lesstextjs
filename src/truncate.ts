@@ -81,7 +81,7 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
   do {
     const experimentWordsCount: number = Math.floor((minWordsCount + maxWordsCount + 1) / 2);
     const experimentText: string =
-      wordsArray.slice(0, experimentWordsCount - 1).join(options.separator) + options.omission;
+      wordsArray.slice(0, experimentWordsCount).join(options.separator) + options.omission;
     options.flexibleElement.textContent = experimentText;
 
     if (hasEnoughSpace(options)) {
@@ -91,7 +91,10 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
     }
   } while (minWordsCount < maxWordsCount);
 
-  // --------------------------
+  options.flexibleElement.textContent =
+    wordsArray.slice(0, minWordsCount).join(options.separator) + options.omission;
+
+    // --------------------------
   // FAST RETURN: Failed
   // We don't have space for even one word, and it is not allowed to break the last word.
   // --------------------------
