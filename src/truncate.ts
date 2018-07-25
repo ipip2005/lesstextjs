@@ -1,29 +1,26 @@
 import { ITruncateOptions } from './ITruncateOptions';
 import { TruncationResult } from './TruncationResult';
 
-function normalizeOptions(options: Partial<ITruncateOptions>): ITruncateOptions {
+function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions> {
   if (!options.monitorElement) {
-    throw new Error('Monitor element cannot be empty');
+    throw new Error('LessText: Monitor element cannot be empty');
   }
 
-  options.scalableElement = options.scalableElement || options.monitorElement;
+  const originalLineHeight: string = window
+    .getComputedStyle(options.monitorElement, undefined)
+    .getPropertyValue('line-height');
 
-  if (options.lineHeight) {
-    options.lineHeight = options.lineHeight;
-  } else {
-    const originalLineHeight: string = window
-      .getComputedStyle(options.monitorElement, undefined)
-      .getPropertyValue('line-height');
+  const lineHeight: number = parseInt(originalLineHeight, 10) || 20;
 
-    options.lineHeight = parseInt(originalLineHeight, 10) || 20;
-  }
-
-  options.linesCount = options.linesCount || 2;
-  options.omission = options.omission || '...';
-  options.omissionBreakWord = options.omissionBreakWord || true;
-  options.separator = options.separator || '';
-
-  return options as ITruncateOptions;
+  return {
+    scalableElement: options.monitorElement,
+    lineHeight,
+    linesCount: 2,
+    omission: '...',
+    omissionBreakWord: true,
+    separator: '',
+    ...options
+  };
 }
 
 function getHeight(element: HTMLElement): number {
@@ -40,8 +37,8 @@ function joinTextArray(textArray: string[], separator: string, omission: string)
   return textArray.join(separator) + omission;
 }
 
-export function truncate(rawOptions: Partial<ITruncateOptions>): Promise<TruncationResult> {
-  const options: ITruncateOptions = normalizeOptions(rawOptions);
+export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult> {
+  const options: Required<ITruncateOptions> = normalizeOptions(rawOptions);
 
   options.monitorElement.style.lineHeight = `${options.lineHeight}px`;
   options.monitorElement.style.wordWrap = 'break-word';

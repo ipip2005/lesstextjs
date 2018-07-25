@@ -10,7 +10,7 @@
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": "~4.4.32",
+    "@microsoft/web-library-build": "~4.4.57",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.1.0",
     "@types/react-dom": "16.0.4",
@@ -18,7 +18,7 @@
     "gulp": "~3.9.1",
     "react": "16.3.0",
     "react-dom": "16.3.0",
-    "typescript": "2.8.1"
+    "typescript": "2.9.2"
   },
   "dependencies": {},
   "scripts": {
