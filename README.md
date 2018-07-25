@@ -6,6 +6,9 @@ At the world of web development, one of the most common scenario which is not bu
 
 While `text-overflow: ellipsis;` only resolves single line truncation of the text element, and only chrome provides bulit-in solution to multiline truncation which is CSS property `-webkit-line-clamp`. We, as web UI developer, really need to a simple, high performant and cross-browser solution to support multiline truncation.
 
+## Demo (Vanilla JS)
+https://codesandbox.io/s/yqxvx12lzv
+
 ## Demo (In React/Typescript application)
 ### Simple truncation with multiple lines
 https://codesandbox.io/s/0xm2zxxk8n
