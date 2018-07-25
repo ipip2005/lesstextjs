@@ -7,10 +7,18 @@ While `text-overflow: ellipsis;` only resolves single line truncation of the tex
 ### Simple truncation with multiple lines
 https://codesandbox.io/s/j20q95zq7v
 
+### Truncate only part of the sentence of the text
+
+
+### Use space ` ` to separate words and do not truncate the last word
+https://codesandbox.io/s/52vk27677n
+
+## Features
+ - Truncate any part of a multiline text and truncated text will end with `...`.
+
 ## TODOS
 
  - Given options for hanlding element resize:
   1. JS library to detect element resize, so user have an ultimate experience. But it cost computing resources so doesn't fit the case there're many LessText objects.
   2. Change the LessText to class. We should provide several public API so consumer can update whenever they want.
  - Truncate using requestAnimationFrame for better performance
- - Ability to truncate text in middle
