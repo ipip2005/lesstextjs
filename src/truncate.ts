@@ -21,7 +21,7 @@ function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions>
     lineHeight,
     linesCount: 2,
     omission: '...',
-    omissionBreakLastWord: true,
+    omissionBreakLastWord: false,
     reserveExtraSpace: false,
     separator: '',
     ...options
@@ -116,10 +116,10 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
     return Promise.resolve(TruncationResult.Success);
   }
 
-  // We will try to show as many chacacters as we can from the last word that was truncated away.
-  const lastWord: string = wordsArray[minWordsCount];
+  // We will try to show as many characters as we can from the last word that was truncated away.
+  const lastWord: string = wordsArray[minWordsCount + 1];
 
-  let currentText: string = wordsArray.slice(0, minWordsCount - 1).join(options.separator);
+  let currentText: string = wordsArray.slice(0, minWordsCount).join(options.separator);
   let nextText: string = currentText + options.separator;
   let experimentCharacterIndex: number = 0;
   options.flexibleElement.textContent = nextText + options.omission;

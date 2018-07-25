@@ -39,7 +39,7 @@ export interface ITruncateOptions {
 
   /**
    * Whether the last word in the truncated text could be a broken down word or must be a complete word.
-   * @default [omissionBreakWord=true]
+   * @default [omissionBreakWord=false]
    */
   omissionBreakLastWord?: boolean;
 }
