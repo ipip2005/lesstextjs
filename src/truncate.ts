@@ -22,7 +22,7 @@ function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions>
     linesCount: 2,
     omission: '...',
     omissionBreakLastWord: true,
-    reserveSpace: false,
+    reserveExtraSpace: false,
     separator: '',
     ...options
   };
@@ -71,7 +71,7 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
 
   const wordsArray: string[] = scalableText
     .split(options.separator)
-    .filter(text => options.reserveSpace || text);
+    .filter(text => options.reserveExtraSpace || text);
 
   const allowedWordsCount: number = wordsArray.length;
 

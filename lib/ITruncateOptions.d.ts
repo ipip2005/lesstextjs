@@ -29,7 +29,7 @@ export interface ITruncateOptions {
      * When set to false, continuous space will be trimmed to be one space and leading/trailing spaces will be deleted.
      * @default false
      */
-    reserveSpace?: boolean;
+    reserveExtraSpace?: boolean;
     /**
      * Whether the last word in the truncated text could be a broken down word or must be a complete word.
      * @default [omissionBreakWord=true]
