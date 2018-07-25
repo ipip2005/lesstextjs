@@ -4,7 +4,7 @@ export interface ITruncateOptions {
   /**
    * @default monitorElement
    */
-  scalableElement?: HTMLElement;
+  flexibleElement?: HTMLElement;
 
   /**
    * The line-height value of the monitor element in pixels.
@@ -41,5 +41,5 @@ export interface ITruncateOptions {
    * Whether the last word in the truncated text could be a broken down word or must be a complete word.
    * @default [omissionBreakWord=true]
    */
-  omissionBreakWord?: boolean;
+  omissionBreakLastWord?: boolean;
 }

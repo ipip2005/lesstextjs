@@ -12,5 +12,11 @@ export const enum TruncationResult {
   /**
    * We successfully truncated the text to fix the given space.
    */
-  Success = 3
+  Success = 3,
+
+  /**
+   * Code runs into some unexpected situation.
+   * Usually means either there is bug in the truncate function or the function is consumed in a hack way.
+   */
+  Unexpected = 4
 }

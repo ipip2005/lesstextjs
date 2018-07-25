@@ -1,6 +1,10 @@
 import { ITruncateOptions } from './ITruncateOptions';
 import { TruncationResult } from './TruncationResult';
 
+/**
+ * Normailize - Set default value of options to make all fields required.
+ * @param options - The truncate options object that has optional fields.
+ */
 function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions> {
   if (!options.monitorElement) {
     throw new Error('LessText: Monitor element cannot be empty');
@@ -13,11 +17,11 @@ function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions>
   const lineHeight: number = parseInt(originalLineHeight, 10) || 20;
 
   return {
-    scalableElement: options.monitorElement,
+    flexibleElement: options.monitorElement,
     lineHeight,
     linesCount: 2,
     omission: '...',
-    omissionBreakWord: true,
+    omissionBreakLastWord: true,
     reserveSpace: false,
     separator: '',
     ...options
@@ -34,8 +38,10 @@ function getHeight(element: HTMLElement): number {
   return element.offsetHeight - padding;
 }
 
-function joinTextArray(textArray: string[], separator: string, omission: string): string {
-  return textArray.join(separator) + omission;
+function hasEnoughSpace(options: Required<ITruncateOptions>): boolean {
+  const maxHeight: number = options.lineHeight * options.linesCount;
+
+  return getHeight(options.monitorElement) <= maxHeight;
 }
 
 export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult> {
@@ -44,41 +50,91 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
   options.monitorElement.style.lineHeight = `${options.lineHeight}px`;
   options.monitorElement.style.wordWrap = 'break-word';
 
-  const maxHeight: number = options.lineHeight * options.linesCount;
-
-  if (getHeight(options.monitorElement) <= maxHeight) { // Had enough space, skip truncating.
+  // --------------------------
+  // FAST RETURN: Skipped
+  // Had enough space, skip truncating.
+  // --------------------------
+  if (hasEnoughSpace(options)) {
     return Promise.resolve(TruncationResult.Skipped);
   }
 
-  const scalableText: string = options.scalableElement.textContent || '';
-  if (!scalableText) { // Space is not enough, and there is no text can be truncated, thus nothing we could do.
+  // This is the text where we can operate.
+  const scalableText: string = options.flexibleElement.textContent || '';
+
+  // --------------------------
+  // FAST RETURN: Failed
+  // We cannot do anything if there is no text that can be truncated.
+  // --------------------------
+  if (!scalableText) {
     return Promise.resolve(TruncationResult.Failed);
   }
 
-  const textArray: string[] = scalableText
+  const wordsArray: string[] = scalableText
     .split(options.separator)
     .filter(text => options.reserveSpace || text);
 
-  const allowedTextNumber: number = textArray.length;
+  const allowedWordsCount: number = wordsArray.length;
 
-  let minTextNumber: number = 0, maxTextNumber: number = allowedTextNumber;
+  let minWordsCount: number = 0, maxWordsCount: number = allowedWordsCount;
 
+  // Do a binary search to fit as many words as we can.
   do {
-    const currentCharactersCount: number = Math.floor((minTextNumber + maxTextNumber + 1) / 2);
-    const currentTruncatedText: string =
-      joinTextArray(textArray.slice(0, currentCharactersCount - 1), options.separator, options.omission);
-    options.scalableElement.textContent = currentTruncatedText;
+    const experimentWordsCount: number = Math.floor((minWordsCount + maxWordsCount + 1) / 2);
+    const experimentText: string =
+      wordsArray.slice(0, experimentWordsCount - 1).join(options.separator) + options.omission;
+    options.flexibleElement.textContent = experimentText;
 
-    if (getHeight(options.monitorElement) > maxHeight) {
-      maxTextNumber = currentCharactersCount - 1;
+    if (hasEnoughSpace(options)) {
+      minWordsCount = experimentWordsCount;
     } else {
-      minTextNumber = currentCharactersCount;
+      maxWordsCount = experimentWordsCount - 1;
     }
-  } while (minTextNumber < maxTextNumber);
+  } while (minWordsCount < maxWordsCount);
 
-  if (minTextNumber === 0) { // We truncated everyting.
+  // --------------------------
+  // FAST RETURN: Failed
+  // We don't have space for even one word, and it is not allowed to break the last word.
+  // --------------------------
+  if (minWordsCount === 0 && !options.omissionBreakLastWord) {
     return Promise.resolve(TruncationResult.Failed);
-  } else {
+  }
+
+  // --------------------------
+  // FAST RETURN: Unexpected
+  // The hit of this code means no text is truncated,
+  // in which case the function should already be returned at the early stage.
+  // --------------------------
+  if (minWordsCount === allowedWordsCount) {
+    return Promise.resolve(TruncationResult.Unexpected);
+  }
+
+  // --------------------------
+  // FAST RETURN: Success
+  // The words have been truncated and it is not configured to further truncate the last word.
+  // --------------------------
+  if (!options.omissionBreakLastWord) {
     return Promise.resolve(TruncationResult.Success);
   }
+
+  // We will try to show as many chacacters as we can from the last word that was truncated away.
+  const lastWord: string = wordsArray[minWordsCount];
+
+  let currentText: string = wordsArray.slice(0, minWordsCount - 1).join(options.separator);
+  let nextText: string = currentText + options.separator;
+  let experimentCharacterIndex: number = 0;
+  options.flexibleElement.textContent = nextText + options.omission;
+
+  while (hasEnoughSpace(options) && experimentCharacterIndex < lastWord.length) {
+    currentText = nextText;
+    nextText = currentText + lastWord[experimentCharacterIndex++];
+    options.flexibleElement.textContent = nextText + options.omission;
+  }
+
+  options.flexibleElement.textContent = currentText + options.omission;
+
+  // --------------------------
+  // FAST RETURN: Success
+  // We are able to show as many characters as we can.
+  // --------------------------
+  return Promise.resolve(TruncationResult.Success);
 }

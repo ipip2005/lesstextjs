@@ -3,7 +3,7 @@ export interface ITruncateOptions {
     /**
      * @default monitorElement
      */
-    scalableElement?: HTMLElement;
+    flexibleElement?: HTMLElement;
     /**
      * The line-height value of the monitor element in pixels.
      * @default - If lineHeight is not specified, the line height of monitorElement will be used.
@@ -24,8 +24,15 @@ export interface ITruncateOptions {
      */
     separator?: string;
     /**
+     * Whether space character should be reserved.
+     * When set to true, continuous space characters will not be deleted.
+     * When set to false, continuous space will be trimmed to be one space and leading/trailing spaces will be deleted.
+     * @default false
+     */
+    reserveSpace?: boolean;
+    /**
      * Whether the last word in the truncated text could be a broken down word or must be a complete word.
      * @default [omissionBreakWord=true]
      */
-    omissionBreakWord?: boolean;
+    omissionBreakLastWord?: boolean;
 }
