@@ -1,6 +1,6 @@
 {
   "name": "lesstextjs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A react component that display multiple lines of text which is truncated at the end.",
   "license": "MIT",
   "main": "lib/index.js",
