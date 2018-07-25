@@ -22,6 +22,5 @@ https://codesandbox.io/s/j20q95zq7v
 ## TODOS
 
  - Given options for hanlding element resize:
-  1. JS library to detect element resize, so user have an ultimate experience. But it cost computing resources so doesn't fit the case there're many LessText objects.
   2. Change the LessText to class. We should provide several public API so consumer can update whenever they want.
  - Truncate using requestAnimationFrame for better performance
