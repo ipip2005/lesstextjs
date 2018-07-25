@@ -7,10 +7,10 @@ While `text-overflow: ellipsis;` only resolves single line truncation of the tex
 ### Simple truncation with multiple lines
 https://codesandbox.io/s/j20q95zq7v
 
-### Truncate only part of the sentence of the text
+### Truncate only part of the sentence
+https://codesandbox.io/s/p5m07y2jzm
 
-
-### Use space ` ` to separate words and do not truncate the last word
+### Use space character to separate words and do not truncate the last word. (Avoid any word to be broken up and losing meaning)
 https://codesandbox.io/s/52vk27677n
 
 ## Features
