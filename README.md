@@ -5,13 +5,16 @@ While `text-overflow: ellipsis;` only resolves single line truncation of the tex
 
 ## Demo
 ### Simple truncation with multiple lines
-https://codesandbox.io/s/j20q95zq7v
+https://codesandbox.io/s/0xm2zxxk8n
 
 ### Truncate only part of the sentence
 https://codesandbox.io/s/p5m07y2jzm
 
 ### Use space character to separate words and do not truncate the last word. (Avoid any word to be broken up and losing meaning)
 https://codesandbox.io/s/52vk27677n
+
+### Reserve white space for formatting
+https://codesandbox.io/s/j20q95zq7v
 
 ## Features
  - Truncate any part of a multiline text and truncated text will end with `...`.
