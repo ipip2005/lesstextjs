@@ -18,6 +18,7 @@ function normalizeOptions(options: ITruncateOptions): Required<ITruncateOptions>
     linesCount: 2,
     omission: '...',
     omissionBreakWord: true,
+    reserveSpace: false,
     separator: '',
     ...options
   };
@@ -49,15 +50,15 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
     return Promise.resolve(TruncationResult.Skipped);
   }
 
-  const truncatableText: string = options.scalableElement.textContent || '';
+  const scalableText: string = options.scalableElement.textContent || '';
 
-  if (!truncatableText) { // Spcae is not enough, but there is no text can be truncated.
+  if (!scalableText) { // Spcae is not enough, and there is no text can be truncated, thus nothing we could do.
     return Promise.resolve(TruncationResult.Failed);
   }
 
-  const textArray: string[] = truncatableText
+  const textArray: string[] = scalableText
     .split(options.separator)
-    .filter(text => text);
+    .filter(text => options.reserveSpace || text);
 
   const allowedTextNumber: number = textArray.length;
 
