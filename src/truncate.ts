@@ -51,8 +51,7 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
   }
 
   const scalableText: string = options.scalableElement.textContent || '';
-
-  if (!scalableText) { // Spcae is not enough, and there is no text can be truncated, thus nothing we could do.
+  if (!scalableText) { // Space is not enough, and there is no text can be truncated, thus nothing we could do.
     return Promise.resolve(TruncationResult.Failed);
   }
 
