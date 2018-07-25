@@ -64,15 +64,15 @@ export function truncate(rawOptions: ITruncateOptions): Promise<TruncationResult
   let minTextNumber: number = 0, maxTextNumber: number = allowedTextNumber;
 
   do {
-    const currentTextNumber: number = Math.floor((minTextNumber + maxTextNumber + 1) / 2);
+    const currentCharactersCount: number = Math.floor((minTextNumber + maxTextNumber + 1) / 2);
     const currentTruncatedText: string =
-      joinTextArray(textArray.slice(0, currentTextNumber - 1), options.separator, options.omission);
+      joinTextArray(textArray.slice(0, currentCharactersCount - 1), options.separator, options.omission);
     options.scalableElement.textContent = currentTruncatedText;
 
     if (getHeight(options.monitorElement) > maxHeight) {
-      maxTextNumber = currentTextNumber - 1;
+      maxTextNumber = currentCharactersCount - 1;
     } else {
-      minTextNumber = currentTextNumber;
+      minTextNumber = currentCharactersCount;
     }
   } while (minTextNumber < maxTextNumber);
 
