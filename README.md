@@ -35,3 +35,6 @@ https://codesandbox.io/s/j20q95zq7v
 
 ## TODOS
  - Truncate using requestAnimationFrame for better performance
+ 
+## License
+LessTextJS is [MIT licensed](https://github.com/ipip2005/lesstextjs/blob/master/LICENSE)
