@@ -1,6 +1,12 @@
 export interface ITruncateOptions {
+    /**
+     * The element whose height will be monitored to decide if the text is rendered within given space.
+     */
     monitorElement: HTMLElement;
     /**
+     * The element whose text content can be truncated.
+     * When not specified, it will be `monitor` element.
+     * When specified, only text content in the flexibleElement will be truncated.
      * @default monitorElement
      */
     flexibleElement?: HTMLElement;
@@ -10,30 +16,34 @@ export interface ITruncateOptions {
      */
     lineHeight?: number;
     /**
+     * The count of lines that will be rendered within monitorElement.
      * @default [linesCount=2]
      */
     linesCount?: number;
     /**
-     * Symbol to append to the truncated text.
+     * Symbol to append at the end of the truncated text.
      * @default [omission='...']
      */
     omission?: string;
     /**
-     * Symbol/Regex used for spliting text when truncating text.
-     * @default [separator=undefined]
+     * Symbol/Regex used for splitting text when truncating text.
+     * E.g. In English, use space to separate words in a sentence.
+     * @default [separator='']
      */
     separator?: string;
     /**
-     * Whether space character should be reserved.
-     * When set to true, continuous space characters will not be deleted.
-     * When set to false, continuous space will be trimmed to be one space and leading/trailing spaces will be deleted.
+     * Whether space and line break characters should be reserved.
+     * It is pretty useful when the content format should be maintained. Like line breaking and extra spaces.
      * @default false
      */
-    reserveExtraSpace?: boolean;
+    reserveWhiteSpace?: boolean;
     /**
-     * Whether the last word in the truncated text could be a broken down word or must be a complete word.
+     * Whether the last word in the truncated text could be a broken up or must be a complete word.
      * It doesn't work when separator is undefined or empty string because all characters have
      * already been broken up.
+     * @example
+     *  when it is true, it is possible to see "an app..." in a truncated text when the word is apple.
+     *  when it is false, you'll probably only see "an ..." in the truncated text.
      * @default [omissionBreakWord=false]
      */
     omissionBreakLastWord?: boolean;
