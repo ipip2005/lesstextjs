@@ -1,9 +1,12 @@
-# lesstextjs <UNDER DEVELOPMENT>
+# lesstextjs
+A cross-browser javascript solution for truncating any part of a multiline text that is built for variants of options.
+
+## Background
 At the world of web development, one of the most common scenario which is not built-in cross-browser is called truncated-multiple-lines-of-text.
 
-While `text-overflow: ellipsis;` only resolves single line truncation of the text element, and only chrome provides bulit-in solution to multiline truncation which is CSS property `-webkit-line-clamp`. We, as web UI developer, really need to a simple and cross-browser solution to support multiline truncation.
+While `text-overflow: ellipsis;` only resolves single line truncation of the text element, and only chrome provides bulit-in solution to multiline truncation which is CSS property `-webkit-line-clamp`. We, as web UI developer, really need to a simple, high performant and cross-browser solution to support multiline truncation.
 
-## Demo
+## Demo (In React/Typescript application)
 ### Simple truncation with multiple lines
 https://codesandbox.io/s/0xm2zxxk8n
 
