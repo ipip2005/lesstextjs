@@ -33,8 +33,11 @@ https://codesandbox.io/s/j20q95zq7v
 ## Features
  - Truncate any part of a multiline text and truncated text will end with `...`.
 
+## Changelog
+v1.0 - Multiline Truncation, and partial truncation with '...'
+
 ## TODOS
  - Truncate using requestAnimationFrame for better performance
- 
+
 ## License
 LessTextJS is [MIT licensed](https://github.com/ipip2005/lesstextjs/blob/master/LICENSE)
