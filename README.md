@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/7711735/43622777-bc490208-9692-11e8-9417-046b4a4ca53c.png)
+
 # lesstextjs
 A cross-browser javascript solution for truncating any part of a multiline text that is built for variants of options.
 
